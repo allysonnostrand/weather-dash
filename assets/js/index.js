@@ -1,28 +1,51 @@
 var APIkey = "37f8c9a38ed79ac3bb509ee15e76b898"
-city= "Monroe"
+// let city= "Monroe"
 
-var onedayURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}&units=imperial`;
 
-function getOne() {
-   fetch(onedayURL)
-   .then (function (response){
-       return response.json()
-   }).then (function (data){
-       console.log(data)
-   }); 
-}
+// function getOne() {
+//    fetch(onedayURL)
+//    .then (function (response){
+//        return response.json()
+//    }).then (function (data){
+//        console.log(data)
+//    }); 
+// }
 
-getOne();
+// getOne();
 
-var fivedayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&cnt=5&appid=${APIkey}`;
+// var fivedayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&cnt=5&appid=${APIkey}`;
 
-function getfive() {
-   fetch(fivedayURL)
-   .then (function (response){
-       return response.json()
-   }).then (function (data){
-       console.log(data)
-   }); 
-}
+// function getfive() {
+//    fetch(fivedayURL)
+//    .then (function (response){
+//        return response.json()
+//    }).then (function (data){
+//        console.log(data)
+//    }); 
+// }
 
-getfive();
+// getfive();
+
+document.querySelector("#searchForm").addEventListener("submit", e => {
+    e.preventDefault();
+    let city = document.querySelector("#search").value
+    var onedayURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}&units=imperial`;
+    fetch(onedayURL)
+    .then (function (response){
+        return response.json()
+    }).then (function (data){
+        console.log(data)
+    });
+})
+
+document.querySelector("#searchForm").addEventListener("submit", e => {
+    e.preventDefault();
+    let city = document.querySelector("#search").value
+    var fivedayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&cnt=5&appid=${APIkey}`;
+    fetch(fivedayURL)
+    .then (function (response){
+        return response.json()
+    }).then (function (data){
+        console.log(data)
+    });
+})
