@@ -1,31 +1,6 @@
 var APIkey = "37f8c9a38ed79ac3bb509ee15e76b898";
 var list = document.querySelector("ul");
-// let city= "Monroe"
-
-
-// function getOne() {
-//    fetch(onedayURL)
-//    .then (function (response){
-//        return response.json()
-//    }).then (function (data){
-//        console.log(data)
-//    }); 
-// }
-
-// getOne();
-
-// var fivedayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&cnt=5&appid=${APIkey}`;
-
-// function getfive() {
-//    fetch(fivedayURL)
-//    .then (function (response){
-//        return response.json()
-//    }).then (function (data){
-//        console.log(data)
-//    }); 
-// }
-
-// getfive();
+var iconImg = document.querySelector("div")
 
 document.querySelector("#searchForm").addEventListener("submit", e => {
     e.preventDefault();
@@ -36,6 +11,7 @@ document.querySelector("#searchForm").addEventListener("submit", e => {
         return response.json()
     }).then (function (data){
         console.log(data)
+        console.log(data.weather[0].icon)
         let todayTemp = document.createElement("p")
         todayTemp.textContent = `Temp: ${data.main.temp} F`
         list.appendChild(todayTemp)
@@ -45,8 +21,18 @@ document.querySelector("#searchForm").addEventListener("submit", e => {
         list.appendChild(todayWind)
 
         let todayHumidity = document.createElement("p")
-        todayHumidity.textContent = `Humidity: ${data.main.humidity}` 
+        todayHumidity.textContent = `Humidity: ${data.main.humidity}%` 
         list.appendChild(todayHumidity)
+
+        let todayCity = document.createElement("p")
+        todayCity.textContent = `City: ${data.name}` 
+        list.appendChild(todayCity)
+
+        let todayIcon = document.createElement("img")
+        let iconNum = data.weather[0].icon
+        let iconURL = "https://openweathermap.org/img/w/" + iconNum + ".png"
+        todayIcon.setAttribute("src", iconURL) 
+        iconImg.appendChild(todayIcon)
     })
 })
 
@@ -61,3 +47,4 @@ document.querySelector("#searchForm").addEventListener("submit", e => {
         console.log(data)
     });
 })
+
