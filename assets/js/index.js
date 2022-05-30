@@ -13,12 +13,15 @@ document.querySelector("#searchForm").addEventListener("submit", e => {
     .then (function (response){
         return response.json()
     }).then (function (data){
-        console.log(data)
+        console.log(data);
+        localStorage.setItem("current" + data.name, JSON.stringify(data))
+        currentWeather(data)
+    })
+})
 
+function currentWeather(data) {
         //city
-        let todayCity = document.createElement("h2")
-        todayCity.textContent = `City: ${data.name}` 
-        cityName.appendChild(todayCity)
+        cityName.textContent = `City: ${data.name}` 
 
         //temp
         let todayTemp = document.createElement("p")
@@ -41,8 +44,7 @@ document.querySelector("#searchForm").addEventListener("submit", e => {
         let iconURL = "https://openweathermap.org/img/w/" + iconNum + ".png"
         todayIcon.setAttribute("src", iconURL) 
         iconImg.appendChild(todayIcon)
-    })
-})
+}
 
 //five day forecast
 document.querySelector("#searchForm").addEventListener("submit", e => {
@@ -54,7 +56,12 @@ document.querySelector("#searchForm").addEventListener("submit", e => {
         return response.json()
     }).then (function (data){
         console.log(data)
+        localStorage.setItem("fiveDay" + data.city.name, JSON.stringify(data))
+        fiveDayWeather(data)
+    });
+})
 
+function fiveDayWeather(data) {
         //loop over each index
         let eachDay = data.list
         for (i=0; i < eachDay.length; i++){
@@ -62,6 +69,7 @@ document.querySelector("#searchForm").addEventListener("submit", e => {
         
         //where each card gets appended to
         let everyDay = document.createElement("div")
+        everyDay.setAttribute("style", "margin: 10px; border: solid 1px black; padding: 8px;")
         fiveCard.appendChild(everyDay)
         
         //five day temp
@@ -90,7 +98,5 @@ document.querySelector("#searchForm").addEventListener("submit", e => {
         let iconURL = "https://openweathermap.org/img/w/" + iconNum + ".png"
         todayIcon.setAttribute("src", iconURL) 
         everyDay.appendChild(todayIcon)
-
-    }});
-})
-
+    }
+}

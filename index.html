@@ -4,30 +4,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
 
-<div style="display: flex;">
-    <form id="searchForm">
+<div class="row">
+    <form id="searchForm" class="col-3">
         <input type="text" id="search" name="City" placeholder="City">
         <button>Search</button>
     </form>
 
-    <div id="city" style="background-color: blue;">
+    <div style="background-color: blue;" class="col-9">
         <div id="card">
+            <h2 id="city"></h2>
             <ul id="oneDay">
             </ul>
         </div>
     </div>
-
+<div>
     <div id="five">
-        <div id="otherCards">
-            <ul id="fiveDay">
-            </ul>
+        <div id="otherCards" class="row">
+            <div id="fiveDay" style="display: flex;">
+            </div>
         </div>
     </div>
 </div>
+</div>
 
 <script src="./assets/js/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>
