@@ -6,16 +6,28 @@
     <title>Document</title>
 </head>
 <body>
-<form id="searchForm">
-    <input type="text" id="search" name="City" placeholder="City">
-    <button>Search</button>
-</form>
-<ul>
 
-</ul>
-<div>
-    
+<div style="display: flex;">
+    <form id="searchForm">
+        <input type="text" id="search" name="City" placeholder="City">
+        <button>Search</button>
+    </form>
+
+    <div id="city" style="background-color: blue;">
+        <div id="card">
+            <ul id="oneDay">
+            </ul>
+        </div>
+    </div>
+
+    <div id="five">
+        <div id="otherCards">
+            <ul id="fiveDay">
+            </ul>
+        </div>
+    </div>
 </div>
+
 <script src="./assets/js/index.js"></script>
 </body>
 </html>
