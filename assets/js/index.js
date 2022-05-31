@@ -3,6 +3,9 @@ var cityName = document.getElementById("city")
 var iconImg = document.getElementById("card")
 var oneCard = document.getElementById("oneDay")
 var fiveCard = document.getElementById("fiveDay")
+var historyList = document.getElementById("history")
+var currentData = []
+var extendedData = []
 
 //Current day forecast
 document.querySelector("#searchForm").addEventListener("submit", e => {
@@ -13,8 +16,11 @@ document.querySelector("#searchForm").addEventListener("submit", e => {
     .then (function (response){
         return response.json()
     }).then (function (data){
-        console.log(data);
-        localStorage.setItem("current" + data.name, JSON.stringify(data))
+        localStorage.getItem("current", currentData)
+        console.log(data)
+        console.log(currentData)
+        currentData.push(data)
+        localStorage.setItem("current", JSON.stringify(currentData))
         currentWeather(data)
     })
 })
@@ -22,6 +28,12 @@ document.querySelector("#searchForm").addEventListener("submit", e => {
 function currentWeather(data) {
         //city
         cityName.textContent = `City: ${data.name}` 
+
+        //city to history
+        let searchHistory = document.createElement("li")
+        searchHistory.textContent = `${data.name}`
+        searchHistory.setAttribute("id", "lookup")
+        historyList.appendChild(searchHistory)
 
         //temp
         let todayTemp = document.createElement("p")
@@ -55,8 +67,11 @@ document.querySelector("#searchForm").addEventListener("submit", e => {
     .then (function (response){
         return response.json()
     }).then (function (data){
+        localStorage.getItem("fiveday", extendedData)
         console.log(data)
-        localStorage.setItem("fiveDay" + data.city.name, JSON.stringify(data))
+        console.log(extendedData)
+        extendedData.push(data)
+        localStorage.setItem("fiveDay", JSON.stringify(data))
         fiveDayWeather(data)
     });
 })
