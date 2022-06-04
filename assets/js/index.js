@@ -22,6 +22,14 @@ document.querySelector("#searchForm").addEventListener("submit", e => {
         currentData.push(data)
         localStorage.setItem("current", JSON.stringify(currentData))
         currentWeather(data)
+        
+        //city to history
+        let searchHistory = document.createElement("button")
+        searchHistory.textContent = `${data.name}`
+        searchHistory.setAttribute("id", `historyCities`)
+        searchHistory.setAttribute("class", `historyCitiesClass`)
+        historyList.appendChild(searchHistory)
+        searchHistory.onclick = historyClick
     })
 })
 
@@ -29,19 +37,12 @@ function currentWeather(data) {
         while (oneCard.hasChildNodes()){
             oneCard.removeChild(oneCard.firstChild);    
         }
-
         while (iconImg.hasChildNodes()){
             iconImg.removeChild(iconImg.firstChild);
         }
 
         //city
         cityName.textContent = `City: ${data.name}` 
-
-        //city to history
-        let searchHistory = document.createElement("li")
-        searchHistory.textContent = `${data.name}`
-        searchHistory.setAttribute("id", "lookup")
-        historyList.appendChild(searchHistory)
 
         //temp
         let todayTemp = document.createElement("p")
@@ -128,3 +129,22 @@ function fiveDayWeather(data) {
         everyDay.appendChild(todayIcon)
     }
 }
+
+function historyClick () {
+    console.log("here")
+        let city = this.textContent
+        var onedayURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}&units=imperial`;
+        fetch(onedayURL)
+        .then (function (response){
+        return response.json()
+        }).then (function (data){
+        currentWeather(data)
+        })
+        var fivedayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&cnt=5&appid=${APIkey}`;
+        fetch(fivedayURL)
+        .then (function (response){
+            return response.json()
+        }).then (function (data){
+            fiveDayWeather(data)
+        });
+    }
