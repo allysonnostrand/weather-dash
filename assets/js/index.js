@@ -26,6 +26,14 @@ document.querySelector("#searchForm").addEventListener("submit", e => {
 })
 
 function currentWeather(data) {
+        while (oneCard.hasChildNodes()){
+            oneCard.removeChild(oneCard.firstChild);    
+        }
+
+        while (iconImg.hasChildNodes()){
+            iconImg.removeChild(iconImg.firstChild);
+        }
+
         //city
         cityName.textContent = `City: ${data.name}` 
 
@@ -77,12 +85,17 @@ document.querySelector("#searchForm").addEventListener("submit", e => {
 })
 
 function fiveDayWeather(data) {
+        while (fiveCard.hasChildNodes()){
+            fiveCard.removeChild(fiveCard.firstChild);    
+        }
+
         //loop over each index
         let eachDay = data.list
         for (i=0; i < eachDay.length; i++){
             let day = eachDay[i]
         
         //where each card gets appended to
+        
         let everyDay = document.createElement("div")
         everyDay.setAttribute("style", "margin: 10px; border: solid 1px black; padding: 8px;")
         fiveCard.appendChild(everyDay)
