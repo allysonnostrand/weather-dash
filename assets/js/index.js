@@ -44,6 +44,12 @@ function currentWeather(data) {
         //city
         cityName.textContent = `City: ${data.name}` 
 
+        //date
+        let todayDate = document.createElement("h4")
+        let date = moment().format('MMM Do, YYYY')
+        todayDate.textContent = `${date}`
+        oneCard.appendChild(todayDate)
+
         //temp
         let todayTemp = document.createElement("p")
         todayTemp.textContent = `Temp: ${data.main.temp} F`
@@ -71,7 +77,7 @@ function currentWeather(data) {
 document.querySelector("#searchForm").addEventListener("submit", e => {
     e.preventDefault();
     let city = document.querySelector("#search").value
-    var fivedayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&cnt=5&appid=${APIkey}`;
+    var fivedayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${APIkey}`;
     fetch(fivedayURL)
     .then (function (response){
         return response.json()
@@ -92,15 +98,20 @@ function fiveDayWeather(data) {
 
         //loop over each index
         let eachDay = data.list
-        for (i=0; i < eachDay.length; i++){
+        for (i=5; i < eachDay.length; i = i+8){
             let day = eachDay[i]
         
         //where each card gets appended to
-        
         let everyDay = document.createElement("div")
         everyDay.setAttribute("style", "margin: 10px; border: solid 1px black; padding: 8px;")
         fiveCard.appendChild(everyDay)
         
+        // date
+        let todayDate = document.createElement("p")
+        let date = moment(`${day.dt_txt}`).format('MMM Do, YYYY')
+        todayDate.textContent = `${date}`
+        everyDay.appendChild(todayDate)
+
         //five day temp
         let todayTemp = document.createElement("p")
         todayTemp.textContent = `Temp: ${day.main.temp} F`
