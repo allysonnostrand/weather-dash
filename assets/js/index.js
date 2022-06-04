@@ -88,6 +88,17 @@ function currentWeather(data) {
             // uv index
             let uv = document.createElement("p")
             uv.textContent = `${uvdata.current.uvi}`
+            if (uv.textContent < 3.0){
+                uv.setAttribute("style", "background-color: green; width: fit-content")
+            }
+            else if (uv.textContent >= 3.0 && uv.textContent < 6.0){
+                uv.setAttribute("style", "background-color: yellow; width: fit-content")
+            }
+            else if (uv.textContent >= 6.0 && uv.textContent < 7.0){
+                uv.setAttribute("style", "background-color: orange; width: fit-content")
+            } else {
+                uv.setAttribute("style", "background-color: red; width: fit-content")
+            }
             oneCard.appendChild(uv)  
         })
 }
@@ -122,7 +133,7 @@ function fiveDayWeather(data) {
         
         //where each card gets appended to
         let everyDay = document.createElement("div")
-        everyDay.setAttribute("style", "margin: 10px; border: solid 1px black; padding: 8px;")
+        everyDay.setAttribute("style", "margin: 10px; border: solid 1px black; padding: 8px; background-color: rgb(243, 252, 240)")
         fiveCard.appendChild(everyDay)
         
         // date
