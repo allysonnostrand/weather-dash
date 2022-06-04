@@ -71,6 +71,25 @@ function currentWeather(data) {
         let iconURL = "https://openweathermap.org/img/w/" + iconNum + ".png"
         todayIcon.setAttribute("src", iconURL) 
         iconImg.appendChild(todayIcon)
+
+        //getting lat and lon for uv fetch
+        let lattitude = data.coord.lat
+        let longitude = data.coord.lon
+        console.log(lattitude, longitude)
+
+        //fetching uv
+        var uvIndex = `https://api.openweathermap.org/data/2.5/onecall?lat=${lattitude}&lon=${longitude}&appid=${APIkey}`
+        fetch(uvIndex)
+        .then (function (response){
+            return response.json()
+        }).then (function(uvdata){
+            console.log(uvdata)
+
+            // uv index
+            let uv = document.createElement("p")
+            uv.textContent = `${uvdata.current.uvi}`
+            oneCard.appendChild(uv)  
+        })
 }
 
 //five day forecast
@@ -147,7 +166,7 @@ function historyClick () {
         var onedayURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}&units=imperial`;
         fetch(onedayURL)
         .then (function (response){
-        return response.json()
+            return response.json()
         }).then (function (data){
         currentWeather(data)
         })
@@ -156,6 +175,7 @@ function historyClick () {
         .then (function (response){
             return response.json()
         }).then (function (data){
-            fiveDayWeather(data)
+        fiveDayWeather(data)
         });
     }
+
