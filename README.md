@@ -4,6 +4,8 @@
 
 Here is a link to the deployed application 
 
+https://allysonnostrand.github.io/weather-dash/
+
 
 The goal for this assignment was to create a weather dashboard using the OpenWeather api. The user gets to type in the name of a city and is presented with current day forcast including temp, humidity, wind speed, uv index with representing colors and icon of the weather conditions; along with the forecast for the next five days. 
 
@@ -15,7 +17,7 @@ The goal for this assignment was to create a weather dashboard using the OpenWea
 
 Here is a screenshot of the application
 
-<img src="">
+<img src="./assets/images/weather-dash-sc-1.png">
 
 ## Questions
 
