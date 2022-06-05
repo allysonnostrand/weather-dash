@@ -9,34 +9,34 @@
 </head>
 <body>
 
-<div class="row" style="background-color: rgb(252, 243, 162);">
+<div style="background-color: rgb(252, 243, 162);" id="page">
+    <h2>Please type in city name</h2>
     
     <form id="searchForm" class="col-3">
         <input type="text" id="search" name="City" placeholder="City">
         <button>Search</button>
     </form>
 
-    <div style="background-color: rgb(246, 229, 132);">
+    <div style="background-color: rgb(246, 229, 132); width: 500px;">
         <ul id="history">
         </ul>
     </div>
 
-    <div class="col-9" style="background-color: rgb(173, 252, 173); border: 1px solid black;">
-        
-            <h2 id="city"></h2>
+    <div class="col-6" style="background-color: rgb(173, 252, 173); border: 1px solid black;">
+        <h2 id="city"></h2>
             <ul id="oneDay">
             </ul>
         <div id="card">
         </div>
     </div>
-<div>
-    <div id="five">
-        <div id="otherCards" class="row">
-            <div id="fiveDay" style="display: flex;">
+    <div class="row">
+        <div id="five">
+            <div id="otherCards" class="row">
+                <div id="fiveDay" style="display: flex;">
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <script src="./assets/js/index.js"></script>

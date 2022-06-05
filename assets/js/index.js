@@ -77,7 +77,7 @@ function currentWeather(data) {
         let longitude = data.coord.lon
         console.log(lattitude, longitude)
 
-        //fetching uv
+        // fetching uv
         var uvIndex = `https://api.openweathermap.org/data/2.5/onecall?lat=${lattitude}&lon=${longitude}&appid=${APIkey}`
         fetch(uvIndex)
         .then (function (response){
@@ -122,9 +122,12 @@ document.querySelector("#searchForm").addEventListener("submit", e => {
 })
 
 function fiveDayWeather(data) {
+        console.log(`this is the data ${data.city.name}`)
         while (fiveCard.hasChildNodes()){
-            fiveCard.removeChild(fiveCard.firstChild);    
+        console.log(`this is the child ${fiveCard.firstChild}`)
+        fiveCard.removeChild(fiveCard.firstChild);    
         }
+        console.log("hello")
 
         //loop over each index
         let eachDay = data.list
@@ -134,6 +137,7 @@ function fiveDayWeather(data) {
         //where each card gets appended to
         let everyDay = document.createElement("div")
         everyDay.setAttribute("style", "margin: 10px; border: solid 1px black; padding: 8px; background-color: rgb(243, 252, 240)")
+        fiveCard = document.getElementById("fiveDay")
         fiveCard.appendChild(everyDay)
         
         // date
@@ -172,6 +176,7 @@ function fiveDayWeather(data) {
 }
 
 function historyClick () {
+
     console.log("here")
         let city = this.textContent
         var onedayURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}&units=imperial`;
@@ -184,8 +189,9 @@ function historyClick () {
         var fivedayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&cnt=5&appid=${APIkey}`;
         fetch(fivedayURL)
         .then (function (response){
+            console.log("history five day")
             return response.json()
-        }).then (function (data){
+        }).then (function (data){        
         fiveDayWeather(data)
         });
     }
