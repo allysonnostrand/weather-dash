@@ -3,44 +3,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Weather Dash</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
-<body>
-
-<div style="background-color: rgb(252, 243, 162);" id="page">
-    <h2>Please type in city name</h2>
-    
-    <form id="searchForm" class="col-3">
-        <input type="text" id="search" name="City" placeholder="City">
-        <button>Search</button>
-    </form>
-
-    <div style="background-color: rgb(246, 229, 132); width: 500px;">
-        <ul id="history">
-        </ul>
-    </div>
-
-    <div class="col-6" style="background-color: rgb(173, 252, 173); border: 1px solid black;">
-        <h2 id="city"></h2>
+<body class="body">
+    <div>
+        <h2>Please type in city name</h2>
+        <form id="searchForm" class="col-3">
+            <input type="text" id="search" name="City" placeholder="City">
+            <button>Search</button>
+        </form>
+        <div class="history">
+            <ul id="history">
+            </ul>
+        </div>
+        <div class="col-6 one-day">
+            <h2 id="city"></h2>
             <ul id="oneDay">
             </ul>
-        <div id="card">
+            <div id="card">
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div id="five">
-            <div id="otherCards" class="row">
-                <div id="fiveDay" style="display: flex;">
+        <div class="row">
+            <div id="five">
+                <div id="otherCards" class="row">
+                    <div id="fiveDay">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<script src="./assets/js/index.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-<script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="./assets/js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
 </body>
 </html>

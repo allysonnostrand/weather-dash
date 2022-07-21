@@ -1,0 +1,17 @@
+.body {
+    background-color:  rgb(252, 243, 162);
+}
+
+.history {
+    background-color:  rgb(246, 229, 132);
+    width: 500px;
+}
+
+.one-day {
+    background-color: rgb(173, 252, 173);
+    border: 1px solid black; 
+}
+
+#fiveDay {
+    display: flex;
+}
